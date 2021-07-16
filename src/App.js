@@ -3,7 +3,7 @@ import "./App.scss";
 import { DatePicker } from "antd";
 
 function onChange(date, dateString) {
-   console.log(date, dateString);
+   console.log({ date, dateString });
 }
 
 function App() {
