@@ -1,18 +1,40 @@
 import "./App.scss";
 
-import { DatePicker } from "antd";
+import {
+   BrowserRouter as Router,
+   Switch,
+   Route,
+   // Link,
+} from "react-router-dom";
 
-function onChange(date, dateString) {
-   console.log({ date, dateString });
-}
+import routes from "./config/routes";
 
+// ? function that render the component
+const RouteWithSubRoutes = (route) => {
+   // console.log(route);
+   return (
+      <Route
+         exact={route.exact}
+         path={route.path}
+         render={(props) => (
+            <route.component routes={route.routes} {...props} />
+         )}
+      />
+   );
+};
+
+// !-----------------------------------
 function App() {
    return (
-      <div className="App">
-         <h1>React Client</h1>
-         <h2>Proyercto</h2>
-         <DatePicker onChange={onChange} picker="week" />
-      </div>
+      <>
+         <Router>
+            <Switch>
+               {routes.map((route, index) => (
+                  <RouteWithSubRoutes key={index} {...route} />
+               ))}
+            </Switch>
+         </Router>
+      </>
    );
 }
 
