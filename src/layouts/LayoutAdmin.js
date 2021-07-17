@@ -16,6 +16,7 @@ const LoadRoutes = ({ routes }) => {
    ));
 };
 
+// !---------------------------------------
 const LayoutAdmin = (props) => {
    const { routes } = props;
    const { Header, Content, Footer } = Layout;
