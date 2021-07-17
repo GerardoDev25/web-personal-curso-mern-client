@@ -8,6 +8,9 @@ import LayoutBasic from "../layouts/LayoutBasic";
 import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 
+// ? others
+import Error404 from "../pages/Error404";
+
 const admin = {
    path: "/admin",
    component: LayoutAdmin,
@@ -22,6 +25,9 @@ const admin = {
          path: "/admin/login",
          component: AdminSignIn,
          exact: true,
+      },
+      {
+         component: Error404,
       },
    ],
 };
@@ -39,6 +45,9 @@ const normal = {
          path: "/contact",
          component: Contact,
          exact: true,
+      },
+      {
+         component: Error404,
       },
    ],
 };
