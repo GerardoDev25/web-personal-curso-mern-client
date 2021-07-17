@@ -1,4 +1,6 @@
 import "./App.scss";
+
+// ? page components
 import Admin from "./pages/Admin";
 import SignIn from "./pages/Admin/SignIn";
 import Contact from "./pages/Contact";
