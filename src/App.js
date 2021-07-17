@@ -1,19 +1,37 @@
 import "./App.scss";
 
-// ? page components
-import Admin from "./pages/Admin";
-import SignIn from "./pages/Admin/SignIn";
-import Contact from "./pages/Contact";
-import Home from "./pages/Home";
+import {
+   BrowserRouter as Router,
+   Switch,
+   Route,
+   // Link,
+} from "react-router-dom";
+
+import routes from "./config/routes";
+
+const RouteWithSubRoutes = (route) => {
+   console.log(route);
+   return (
+      <Route
+         exact={route.exact}
+         path={route.path}
+         render={(props) => (
+            <route.component routes={route.routes} {...props} />
+         )}
+      />
+   );
+};
 
 function App() {
    return (
       <>
-         <h1>Hestamos en app js</h1>;
-         <Admin />
-         <SignIn />
-         <Home />
-         <Contact />
+         <Router>
+            <Switch>
+               {routes.map((route, index) => (
+                  <RouteWithSubRoutes key={index} {...route} />
+               ))}
+            </Switch>
+         </Router>
       </>
    );
 }
