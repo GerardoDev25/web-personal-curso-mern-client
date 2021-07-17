@@ -1,20 +1,7 @@
-import { Route } from "react-router-dom";
 import { Layout } from "antd";
 
 import "./LayoutAdmin.scss";
-
-// ? function that load the subRoutes
-const LoadRoutes = ({ routes }) => {
-   console.log(routes);
-   return routes.map((route, index) => (
-      <Route
-         key={index}
-         exact={route.exact}
-         path={route.path}
-         component={route.component}
-      />
-   ));
-};
+import LoadRoutes from "./LoadRoutes";
 
 // !---------------------------------------
 const LayoutAdmin = (props) => {
