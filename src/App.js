@@ -9,8 +9,9 @@ import {
 
 import routes from "./config/routes";
 
+// ? function that render the component
 const RouteWithSubRoutes = (route) => {
-   console.log(route);
+   // console.log(route);
    return (
       <Route
          exact={route.exact}
@@ -22,6 +23,7 @@ const RouteWithSubRoutes = (route) => {
    );
 };
 
+// !-----------------------------------
 function App() {
    return (
       <>
