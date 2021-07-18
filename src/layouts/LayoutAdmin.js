@@ -15,6 +15,7 @@ const LayoutAdmin = (props) => {
    const [menuCollpsed, setmenuCollpsed] = useState(false);
 
    const { routes } = props;
+
    const { Header, Content, Footer } = Layout;
 
    return (
