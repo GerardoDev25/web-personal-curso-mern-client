@@ -7,6 +7,7 @@ import LoadRoutes from "./LoadRoutes";
 
 // ? components
 import MenuTop from "../components/Admin/Menutop";
+import MenuSider from "../components/Admin/MenuSider";
 
 // !---------------------------------------
 const LayoutAdmin = (props) => {
@@ -15,7 +16,7 @@ const LayoutAdmin = (props) => {
 
    return (
       <Layout>
-         {/* Menu sider   */}
+         <MenuSider />
          <Layout className="layout-admin">
             <Header className="layout-admin__header">
                <MenuTop />
