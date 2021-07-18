@@ -10,13 +10,17 @@ const LayoutAdmin = (props) => {
 
    return (
       <Layout>
-         <h2>Menu Sidebar Admin</h2>
-         <Layout>
-            <Header>Header</Header>
-            <Content>
+         {/* Menu sider   */}
+         <Layout className="layout-admin">
+            <Header className="layout-admin__header">
+               {/* todo! : menu top */}
+            </Header>
+            <Content className="layout-admin__content">
                <LoadRoutes routes={routes} />
             </Content>
-            <Footer>Gerardo mindanda</Footer>
+            <Footer className="layout-admin__footer">
+               Gerardo mindanda
+            </Footer>
          </Layout>
       </Layout>
    );
