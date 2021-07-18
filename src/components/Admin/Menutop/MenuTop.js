@@ -1,13 +1,18 @@
 import { Button } from "antd";
 import {
-   PlusCircleOutlined,
    PoweroffOutlined,
+   ArrowLeftOutlined,
+   ArrowRightOutlined,
 } from "@ant-design/icons";
 
 import "./MenuTop.scss";
 import logo from "../../../assets/img/png/3.1 logo-white.png";
 
-const MenuTop = () => {
+const MenuTop = ({ setmenuCollpsed, menuCollpsed }) => {
+   const handleCollapse = () => {
+      setmenuCollpsed(!menuCollpsed);
+   };
+
    return (
       <div className="menu-top">
          <div className="menu-top__left">
@@ -16,13 +21,15 @@ const MenuTop = () => {
                src={logo}
                alt="Gerardo miranda"
             />
-            <Button
-               type="link"
-               onClick={() => console.log("coneccion")}
-            >
-               <PlusCircleOutlined />
+            <Button type="link" onClick={handleCollapse}>
+               {menuCollpsed ? (
+                  <ArrowRightOutlined />
+               ) : (
+                  <ArrowLeftOutlined />
+               )}
             </Button>
          </div>
+
          <div className="menu-top__right">
             <Button
                type="link"
