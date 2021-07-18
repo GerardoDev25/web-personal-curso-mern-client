@@ -1,1 +1,57 @@
+// ? size of fonts
+$defaultFontSize: 16px;
+
+// ? valiables of colors
+// !----------------------
+
 $primary-color: #0098d3;
+$primary-color-hover: #0280b3;
+
+$menu-color: #252527;
+
+// ?fonts
+$font-light: #fff;
+$font-grey-light: #e8e8e8;
+$font-grey: #808080;
+$font-grey-dark: #000;
+$font-dark-light: #252527;
+$font-dark: #000;
+
+// ? borders
+$border-light: #fff;
+$border-grey-light: #e8e8e8;
+$border-grey: #808080;
+$border-grey-dark: #595959;
+$border-dark-light: #252527;
+$border-dark: #000;
+
+// ? backgrounds
+$background-light: #fff;
+$background-grey-light: #e8e8e8;
+$background-grey: #808080;
+$background-grey-dark: #595959;
+$background-dark-light: #252527;
+$background-dark: #000;
+$background-success: #84b84c1f;
+$background-error: #ff00001f;
+
+// ? message
+$success: #84b84c;
+$error: #f00;
+
+// ? MEdias Query
+// !----------------------
+
+// ? Responsive donw Size
+$media-breackpint-donw-xs: 413.98px;
+$media-breackpint-donw-sm: 573.98px;
+$media-breackpint-donw-md: 767.98px;
+$media-breackpint-donw-lg: 991.98px;
+$media-breackpint-donw-xl: 1199.98px;
+
+// ? Responsive up Size
+$media-breackpint-up-xs: 320px;
+$media-breackpint-up-sm: 576px;
+$media-breackpint-up-md: 768px;
+$media-breackpint-up-lg: 992px;
+$media-breackpint-up-xl: 1200px;
