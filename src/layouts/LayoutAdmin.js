@@ -1,7 +1,12 @@
+// ? libreries
 import { Layout } from "antd";
 
+// ? recursos
 import "./LayoutAdmin.scss";
 import LoadRoutes from "./LoadRoutes";
+
+// ? components
+import MenuTop from "../components/Admin/Menutop";
 
 // !---------------------------------------
 const LayoutAdmin = (props) => {
@@ -13,7 +18,7 @@ const LayoutAdmin = (props) => {
          {/* Menu sider   */}
          <Layout className="layout-admin">
             <Header className="layout-admin__header">
-               {/* todo! : menu top */}
+               <MenuTop />
             </Header>
             <Content className="layout-admin__content">
                <LoadRoutes routes={routes} />
