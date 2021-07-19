@@ -1,13 +1,17 @@
+// ? libraries
 import { Layout, Tabs } from "antd";
 // import { Redirect } from "react-router-dom";
 
+// ? others
 import "./SignIn.scss";
 import logo from "../../../assets/img/png/3.1 logo-white.png";
+
+// ? components
+import RegisterForm from "../../../components/Admin/RegisterForm";
 
 const SignIn = () => {
    const { Content } = Layout;
    const { TabPane } = Tabs;
-
    return (
       <Layout className="sign-in">
          <Content className="sign-in__content">
@@ -24,7 +28,8 @@ const SignIn = () => {
                      key="2"
                      tab={<span>Nuevo Usuario</span>}
                   >
-                     Componente Register Form
+                     <RegisterForm />
+                     {/* Componente Register Form */}
                   </TabPane>
                </Tabs>
             </div>
