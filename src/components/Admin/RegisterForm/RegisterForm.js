@@ -88,7 +88,7 @@ const RegisterForm = () => {
          <Form.Item>
             <Button
                htmlType="submit"
-               className="register-form__input"
+               className="register-form__button"
             >
                Crear Cuenta
             </Button>
