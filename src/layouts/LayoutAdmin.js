@@ -1,5 +1,7 @@
 // ? libreries
 import { Layout } from "antd";
+import { useState } from "react";
+import { Redirect, Route } from "react-router-dom";
 
 // ? recursos
 import "./LayoutAdmin.scss";
@@ -8,15 +10,26 @@ import LoadRoutes from "./LoadRoutes";
 // ? components
 import MenuTop from "../components/Admin/Menutop";
 import MenuSider from "../components/Admin/MenuSider";
-import { useState } from "react";
+import AdminSignIn from "../pages/Admin/SignIn";
 
 // !---------------------------------------
 const LayoutAdmin = (props) => {
    const [menuCollpsed, setmenuCollpsed] = useState(false);
-
    const { routes } = props;
-
    const { Header, Content, Footer } = Layout;
+
+   const user = null;
+
+
+   // ? si no esta logeado redirecciona a ligon
+   if (!user) {
+      return (
+         <>
+            <Route path="/admin/login" component={AdminSignIn} />
+            <Redirect to="/admin/login" />
+         </>
+      );
+   }
 
    return (
       <Layout>
