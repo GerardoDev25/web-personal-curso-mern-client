@@ -1,5 +1,5 @@
 import { Layout, Tabs } from "antd";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 import "./SignIn.scss";
 import logo from "../../../assets/img/png/3.1 logo-white.png";
