@@ -1,19 +1,39 @@
+import { useState } from "react";
+
 import {
    Form,
    Button,
    Input,
    Checkbox,
-   notification,
+   // notification,
 } from "antd";
 import { UserAddOutlined, LockFilled } from "@ant-design/icons";
 
 import "./RegisterForm.scss";
 
 const RegisterForm = () => {
+   const [inputs, setinputs] = useState({
+      email: "",
+      password: "",
+      password2: "",
+      privacyPolity: false,
+   });
 
-    
+   const { email, password, password2, privacyPolity } = inputs;
+
+   const handleChange = ({ target }) => {
+      setinputs({
+         ...inputs,
+         [target.name]: target.checked
+            ? target.checked
+            : target.value,
+      });
+   };
+
+   // ? function handle the submit
    const handleSubmit = (e) => {
       e.preventDefault();
+      console.log(inputs);
    };
 
    return (
@@ -31,9 +51,11 @@ const RegisterForm = () => {
                   />
                }
                type="email"
-               name="email"
                placeholder="Correo electronico"
                className="register-form__input"
+               name="email"
+               value={email}
+               onChange={handleChange}
             />
          </Form.Item>
 
@@ -50,9 +72,12 @@ const RegisterForm = () => {
                   />
                }
                type="password"
-               name="password"
                placeholder="Contraseña"
                className="register-form__input"
+               autoComplete="off"
+               name="password"
+               value={password}
+               onChange={handleChange}
             />
          </Form.Item>
 
@@ -69,16 +94,23 @@ const RegisterForm = () => {
                   />
                }
                type="password"
-               name="password2"
                placeholder="Repita Contraseña"
                className="register-form__input"
+               autoComplete="off"
+               name="password2"
+               value={password2}
+               onChange={handleChange}
             />
          </Form.Item>
 
          {/*  */}
 
          <Form.Item>
-            <Checkbox name="privacyPolity">
+            <Checkbox
+               name="privacyPolity"
+               checked={privacyPolity}
+               onChange={handleChange}
+            >
                He leido y acepto la politica de privacidad
             </Checkbox>
          </Form.Item>
