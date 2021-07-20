@@ -1,31 +1,41 @@
 /* eslint-disable no-useless-escape */
-const removeClassErrorSuccess = (inputData) => {
+
+// ? funtio for add and remeve are class css
+export const handleAddRemoveClass = (inputData, boolean) => {
    inputData.classList.remove("success");
    inputData.classList.remove("error");
-};
 
-export const minLengValidation = (inputData, minlenght) => {
-   const { value } = inputData;
-   removeClassErrorSuccess(inputData);
-
-   value.lenght >= minlenght
+   boolean
       ? inputData.classList.add("success")
       : inputData.classList.add("error");
-
-   return value.lenght >= minlenght;
 };
 
+// ? funtion that valida the min lenght the inputs
+export const minLengValidation = (inputData, minlength) => {
+   if (inputData) {
+      const { value } = inputData;
+      return value.length >= minlength;
+   }
+   return false;
+};
+
+// ? funtion that valida the min lenght the inputs
+export const matchesPasswords = (password, password2) => {
+   if (password && password2)
+      return password.value === password2.value;
+
+   return false;
+};
+
+// ? funtion that valida the email
 export const emailValidation = (inputData) => {
-   const emailValid =
-      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-   const { value } = inputData;
+   if (inputData) {
+      const emailValid =
+         /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-   removeClassErrorSuccess(inputData);
-   const resultValidation = emailValid.test(value);
-
-   resultValidation
-      ? inputData.classList.add("success")
-      : inputData.classList.add("error");
-
-   return resultValidation;
+      const { value } = inputData;
+      const resultValidation = emailValid.test(value);
+      return resultValidation;
+   }
+   return false;
 };
