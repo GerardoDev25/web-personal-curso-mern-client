@@ -6,7 +6,7 @@ import {
    Button,
    Input,
    Checkbox,
-   // notification,
+   notification,
 } from "antd";
 import { UserAddOutlined, LockFilled } from "@ant-design/icons";
 
@@ -16,7 +16,7 @@ import {
    emailValidation,
    handleAddRemoveClass,
    matchesPasswords,
-   minLengValidation,
+   minLengthValidation,
 } from "../../../utils/formValidation";
 
 // !-------------------------------------------------
@@ -42,8 +42,12 @@ const RegisterForm = () => {
       privacyPolityValid: false,
    });
 
-   const { emailValid, passwordValid, password2Valid } =
-      inputsValid;
+   const {
+      emailValid,
+      passwordValid,
+      password2Valid,
+      privacyPolityValid,
+   } = inputsValid;
 
    // * refetences of the tag inputs
    const emailId = document.getElementById("emailId");
@@ -66,7 +70,7 @@ const RegisterForm = () => {
       } else if (target.name.includes("password")) {
          setinputsValid({
             ...inputsValid,
-            passwordValid: minLengValidation(passwordId, 3),
+            passwordValid: minLengthValidation(passwordId, 3),
             password2Valid: matchesPasswords(
                passwordId,
                password2Id,
@@ -91,13 +95,24 @@ const RegisterForm = () => {
    // ? function handle the submit
    const handleSubmit = (e) => {
       e.preventDefault();
-      // * valid form imputs
 
-      if (emailId) {
-         handleAddRemoveClass(emailId, emailValid);
-         handleAddRemoveClass(passwordId, passwordValid);
-         handleAddRemoveClass(password2Id, password2Valid);
-      }
+      // * add class success or error
+      handleAddRemoveClass(emailId, emailValid);
+      handleAddRemoveClass(passwordId, passwordValid);
+      handleAddRemoveClass(password2Id, password2Valid);
+
+      // * valid form imputs
+      if (
+         !emailValid ||
+         !passwordValid ||
+         !password2Valid ||
+         !privacyPolityValid
+      ) {
+         notification["error"]({
+            message: "Error Todos los campos son obligatorios",
+         });
+      } else notification["success"]({ message: "bien" });
+
       console.log(inputsValid);
    };
 

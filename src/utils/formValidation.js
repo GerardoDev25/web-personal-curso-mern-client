@@ -2,6 +2,10 @@
 
 // ? funtio for add and remeve are class css
 export const handleAddRemoveClass = (inputData, boolean) => {
+   if (!inputData) {
+      return;
+   }
+
    inputData.classList.remove("success");
    inputData.classList.remove("error");
 
@@ -11,7 +15,7 @@ export const handleAddRemoveClass = (inputData, boolean) => {
 };
 
 // ? funtion that valida the min lenght the inputs
-export const minLengValidation = (inputData, minlength) => {
+export const minLengthValidation = (inputData, minlength) => {
    if (inputData) {
       const { value } = inputData;
       return value.length >= minlength;
