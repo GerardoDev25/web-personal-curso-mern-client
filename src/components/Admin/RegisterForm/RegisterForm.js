@@ -18,6 +18,7 @@ import {
    matchesPasswords,
    minLengthValidation,
 } from "../../../utils/formValidation";
+import { signUpApi } from "../../../api/user";
 
 // !-------------------------------------------------
 //
@@ -93,7 +94,7 @@ const RegisterForm = () => {
    };
 
    // ? function handle the submit
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
 
       // * add class success or error
@@ -111,9 +112,19 @@ const RegisterForm = () => {
          notification["error"]({
             message: "Error Todos los campos son obligatorios",
          });
-      } else notification["success"]({ message: "bien" });
+      } else {
+         // todo conectar con el api y crear usuario
+         const result = await signUpApi(inputs);
+         // console.log(result);
 
-      console.log(inputsValid);
+         result.ok
+            ? notification["success"]({
+                 message: result.message,
+              })
+            : notification["error"]({
+                 message: result.message,
+              });
+      }
    };
 
    return (
