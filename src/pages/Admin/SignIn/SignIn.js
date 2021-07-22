@@ -8,6 +8,7 @@ import logo from "../../../assets/img/png/3.1 logo-white.png";
 
 // ? components
 import RegisterForm from "../../../components/Admin/RegisterForm";
+import LoginForm from "../../../components/Admin/LoginFrom";
 
 const SignIn = () => {
    const { Content } = Layout;
@@ -21,15 +22,17 @@ const SignIn = () => {
             <div className="sign-in__content-tabs">
                <Tabs type="card">
                   <TabPane key="1" tab={<span>Entrar</span>}>
-                     Componente Logo Form
+                     {/* Componente Login Form */}
+
+                     <LoginForm />
                   </TabPane>
 
                   <TabPane
                      key="2"
                      tab={<span>Nuevo Usuario</span>}
                   >
-                     <RegisterForm />
                      {/* Componente Register Form */}
+                     <RegisterForm />
                   </TabPane>
                </Tabs>
             </div>
