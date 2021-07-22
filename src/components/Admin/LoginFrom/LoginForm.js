@@ -1,11 +1,36 @@
-import "./LoginForm.scss";
+import { useState } from "react";
+
 // ? libraries
 import { Form, Button, Input, notification } from "antd";
 import { UserOutlined, LockFilled } from "@ant-design/icons";
 
+// ? others
+import "./LoginForm.scss";
+
 const LoginForm = () => {
+   const [inputs, setinputs] = useState({
+      email: "",
+      password: "",
+   });
+
+   const onChangeForm = ({ target }) => {
+      setinputs({
+         ...inputs,
+         [target.name]: target.value,
+      });
+   };
+
+   const login = (e) => {
+       e.preventDefault()
+       console.log(inputs);
+   };
+
    return (
-      <Form className="login-form">
+      <form
+         className="login-form"
+         onChange={onChangeForm}
+         onSubmit={login}
+      >
          <Form.Item>
             <Input
                prefix={
@@ -46,7 +71,7 @@ const LoginForm = () => {
                Entrar
             </Button>
          </Form.Item>
-      </Form>
+      </form>
    );
 };
 export default LoginForm;
