@@ -1,14 +1,22 @@
 /* eslint-disable no-useless-escape */
 
-// ? funtio for add and remeve are class css
-export const handleAddRemoveClass = (inputData, boolean) => {
+export const removeClass = (inputData) => {
    if (!inputData) {
       return;
    }
 
    inputData.classList.remove("success");
    inputData.classList.remove("error");
+};
 
+// ? funtio for add and remeve are class css
+export const handleAddRemoveClass = (inputData, boolean) => {
+   if (!inputData) {
+      return;
+   }
+   
+   removeClass(inputData);
+   
    boolean
       ? inputData.classList.add("success")
       : inputData.classList.add("error");

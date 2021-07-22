@@ -17,6 +17,7 @@ import {
    handleAddRemoveClass,
    matchesPasswords,
    minLengthValidation,
+   removeClass,
 } from "../../../utils/formValidation";
 import { signUpApi } from "../../../api/user";
 
@@ -54,6 +55,7 @@ const RegisterForm = () => {
    const emailId = document.getElementById("emailId");
    const passwordId = document.getElementById("passwordId");
    const password2Id = document.getElementById("password2Id");
+   // const checkbox = document.getElementById("checkbox");
 
    // ? funtion handle the changes in the input
    const handleChange = ({ target }) => {
@@ -93,6 +95,27 @@ const RegisterForm = () => {
       });
    };
 
+   // ? funtion that reset the form
+   const handleResetForm = () => {
+      removeClass(emailId);
+      removeClass(passwordId);
+      removeClass(password2Id);
+
+      setinputs({
+         email: "",
+         password: "",
+         password2: "",
+         privacyPolity: false,
+      });
+
+      setinputsValid({
+         emailValid: false,
+         passwordValid: false,
+         password2Valid: false,
+         privacyPolityValid: false,
+      });
+   };
+
    // ? function handle the submit
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -113,17 +136,17 @@ const RegisterForm = () => {
             message: "Error Todos los campos son obligatorios",
          });
       } else {
-         // todo conectar con el api y crear usuario
          const result = await signUpApi(inputs);
-         // console.log(result);
 
-         result.ok
-            ? notification["success"]({
-                 message: result.message,
-              })
-            : notification["error"]({
-                 message: result.message,
-              });
+         if (result.ok) {
+            notification["success"]({
+               message: result.message,
+            });
+            handleResetForm();
+         } else
+            notification["error"]({
+               message: result.message,
+            });
       }
    };
 
@@ -205,6 +228,7 @@ const RegisterForm = () => {
                name="privacyPolity"
                checked={privacyPolity}
                onChange={handleCheckbox}
+               id="checkbox"
             >
                He leido y acepto la politica de privacidad
             </Checkbox>
