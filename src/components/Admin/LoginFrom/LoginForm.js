@@ -7,6 +7,10 @@ import { UserOutlined, LockFilled } from "@ant-design/icons";
 // ? others
 import "./LoginForm.scss";
 import { signInApi } from "../../../api/user";
+import {
+   ACCESS_TOKEN,
+   REFRESH_TOKEN,
+} from "../../../utils/constants";
 
 const LoginForm = () => {
    const [inputs, setinputs] = useState({
@@ -21,10 +25,28 @@ const LoginForm = () => {
       });
    };
 
-   const login =async (e) => {
-       e.preventDefault()
-       const result = await signInApi(inputs)
-       console.log(result);
+   const login = async (e) => {
+      e.preventDefault();
+
+      // ? make login
+      const result = await signInApi(inputs);
+
+      if (result.message) {
+         notification.error({
+            message: result.message,
+         });
+      } else {
+         const { accessToken, refreshToken } = result;
+
+         localStorage.setItem(ACCESS_TOKEN, accessToken);
+         localStorage.setItem(REFRESH_TOKEN, refreshToken);
+
+         notification.success({
+            message: "Login",
+         });
+
+         window.location.href = "/admin";
+      }
    };
 
    return (
