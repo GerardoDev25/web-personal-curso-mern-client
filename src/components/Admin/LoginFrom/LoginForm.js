@@ -6,6 +6,7 @@ import { UserOutlined, LockFilled } from "@ant-design/icons";
 
 // ? others
 import "./LoginForm.scss";
+import { signInApi } from "../../../api/user";
 
 const LoginForm = () => {
    const [inputs, setinputs] = useState({
@@ -20,9 +21,10 @@ const LoginForm = () => {
       });
    };
 
-   const login = (e) => {
+   const login =async (e) => {
        e.preventDefault()
-       console.log(inputs);
+       const result = await signInApi(inputs)
+       console.log(result);
    };
 
    return (
