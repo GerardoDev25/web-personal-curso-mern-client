@@ -4,14 +4,13 @@ import {
    BrowserRouter as Router,
    Switch,
    Route,
-   // Link,
 } from "react-router-dom";
 
 import routes from "./config/routes";
+import AuthProvider from "./providers/AuthProvider";
 
 // ? function that render the component
 const RouteWithSubRoutes = (route) => {
-   // console.log(route);
    return (
       <Route
          exact={route.exact}
@@ -26,7 +25,7 @@ const RouteWithSubRoutes = (route) => {
 // !-----------------------------------
 function App() {
    return (
-      <>
+      <AuthProvider>
          <Router>
             <Switch>
                {routes.map((route, index) => (
@@ -34,7 +33,7 @@ function App() {
                ))}
             </Switch>
          </Router>
-      </>
+      </AuthProvider>
    );
 }
 

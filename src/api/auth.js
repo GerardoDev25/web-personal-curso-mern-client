@@ -24,7 +24,7 @@ export const getRefreshTokenApi = () => {
 };
 
 // ? funtion that refresh the token in the localStorage
-export const refreshAccessToken = (refreshToken) => {
+export const refreshAccessTokenApi = (refreshToken) => {
    const url = `${BASE_PATH}/${API_VERSION}/refresh-access-token`;
 
    const bodyObj = { refreshToken };

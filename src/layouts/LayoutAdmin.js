@@ -6,6 +6,7 @@ import { Redirect, Route } from "react-router-dom";
 // ? recursos
 import "./LayoutAdmin.scss";
 import LoadRoutes from "./LoadRoutes";
+import useAuth from "../hooks/useAuth";
 
 // ? components
 import MenuTop from "../components/Admin/Menutop";
@@ -18,8 +19,9 @@ const LayoutAdmin = (props) => {
    const { routes } = props;
    const { Header, Content, Footer } = Layout;
 
-   const user = null;
+   const { user, isloading } = useAuth();
 
+   console.log({ user, isloading });
 
    // ? si no esta logeado redirecciona a ligon
    if (!user) {
