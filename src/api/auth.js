@@ -3,8 +3,8 @@ import jwtDecode from "jwt-decode";
 import { BASE_PATH, API_VERSION } from "./config";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../utils/constants";
 
-
-export const getAccessToken = () => {
+// ? funtion for the get accessToken
+export const getAccessTokenApi = () => {
    const accessToken =
       localStorage.getItem(ACCESS_TOKEN) || null;
 
@@ -13,7 +13,8 @@ export const getAccessToken = () => {
    return willExpiredToken(accessToken) ? null : accessToken;
 };
 
-export const getRefreshToken = () => {
+// ? funtion for the get refeshToken
+export const getRefreshTokenApi = () => {
    const refreshToken =
       localStorage.getItem(REFRESH_TOKEN) || null;
 
@@ -22,6 +23,37 @@ export const getRefreshToken = () => {
    return willExpiredToken(refreshToken) ? null : refreshToken;
 };
 
+// ? funtion that refresh the token in the localStorage
+export const refreshAccessToken = (refreshToken) => {
+   const url = `${BASE_PATH}/${API_VERSION}/refresh-access-token`;
+
+   const bodyObj = { refreshToken };
+
+   const params = {
+      method: "POST",
+      body: JSON.stringify(bodyObj),
+      Headers: { "Content-Type": "application/json" },
+   };
+
+   fetch(url, params)
+      .then((response) =>
+         response.status === 200 ? response.json() : null
+      )
+      .then((result) => {
+         if (!result) {
+            //
+            // todo bloquear usuario
+         } else {
+            const { accessToken, refreshToken } = result;
+            localStorage.setItem(ACCESS_TOKEN, accessToken);
+            localStorage.setItem(REFRESH_TOKEN, refreshToken);
+         }
+      })
+      .catch();
+};
+//
+//
+// ? funtion that compare if the token to expired
 const willExpiredToken = (token) => {
    const seconds = 60;
    const metaToken = jwtDecode(token);
