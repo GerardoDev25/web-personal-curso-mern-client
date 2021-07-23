@@ -32,7 +32,7 @@ export const refreshAccessToken = (refreshToken) => {
    const params = {
       method: "POST",
       body: JSON.stringify(bodyObj),
-      Headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
    };
 
    fetch(url, params)
@@ -42,8 +42,11 @@ export const refreshAccessToken = (refreshToken) => {
       .then((result) => {
          if (!result) {
             //
-            // todo bloquear usuario
+            // * make a logout
+            logout();
          } else {
+            //
+            // * make a refresh the tokens
             const { accessToken, refreshToken } = result;
             localStorage.setItem(ACCESS_TOKEN, accessToken);
             localStorage.setItem(REFRESH_TOKEN, refreshToken);
@@ -51,8 +54,13 @@ export const refreshAccessToken = (refreshToken) => {
       })
       .catch();
 };
-//
-//
+
+// ? funtion that remove the token of the localStorage
+export const logout = () => {
+   localStorage.removeItem(ACCESS_TOKEN);
+   localStorage.removeItem(REFRESH_TOKEN);
+};
+
 // ? funtion that compare if the token to expired
 const willExpiredToken = (token) => {
    const seconds = 60;
