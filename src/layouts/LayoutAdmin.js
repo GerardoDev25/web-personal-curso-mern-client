@@ -21,9 +21,8 @@ const LayoutAdmin = (props) => {
 
    const { user, isloading } = useAuth();
 
-   console.log(user);
    // ? si no esta logeado redirecciona a ligon
-   if (!user) {
+   if (!user && !isloading) {
       return (
          <>
             <Route path="/admin/login" component={AdminSignIn} />
@@ -32,35 +31,38 @@ const LayoutAdmin = (props) => {
       );
    }
 
-   return (
-      <Layout>
-         <MenuSider menuCollpsed={menuCollpsed} />
-         <Layout
-            className="layout-admin"
-            style={{
-               marginLeft: menuCollpsed ? "80px" : "200px",
-            }}
-         >
-            {/* HEADER */}
-            <Header className="layout-admin__header">
-               <MenuTop
-                  setmenuCollpsed={setmenuCollpsed}
-                  menuCollpsed={menuCollpsed}
-               />
-            </Header>
+   if (user && !isloading) {
+      return (
+         <Layout>
+            <MenuSider menuCollpsed={menuCollpsed} />
+            <Layout
+               className="layout-admin"
+               style={{
+                  marginLeft: menuCollpsed ? "80px" : "200px",
+               }}
+            >
+               {/* HEADER */}
+               <Header className="layout-admin__header">
+                  <MenuTop
+                     setmenuCollpsed={setmenuCollpsed}
+                     menuCollpsed={menuCollpsed}
+                  />
+               </Header>
 
-            {/* MAIN */}
-            <Content className="layout-admin__content">
-               <LoadRoutes routes={routes} />
-            </Content>
+               {/* MAIN */}
+               <Content className="layout-admin__content">
+                  <LoadRoutes routes={routes} />
+               </Content>
 
-            {/* FOOTER */}
-            <Footer className="layout-admin__footer">
-               Gerardo mindanda
-            </Footer>
+               {/* FOOTER */}
+               <Footer className="layout-admin__footer">
+                  Gerardo mindanda
+               </Footer>
+            </Layout>
          </Layout>
-      </Layout>
-   );
+      );
+   }
+   return null;
 };
 
 export default LayoutAdmin;

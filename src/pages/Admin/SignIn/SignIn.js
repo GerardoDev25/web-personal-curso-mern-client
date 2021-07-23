@@ -5,14 +5,21 @@ import { Layout, Tabs } from "antd";
 // ? others
 import "./SignIn.scss";
 import logo from "../../../assets/img/png/3.1 logo-white.png";
+import { getAccessTokenApi } from "../../../api/auth";
 
 // ? components
-import RegisterForm from "../../../components/Admin/RegisterForm";
 import LoginForm from "../../../components/Admin/LoginFrom";
+import RegisterForm from "../../../components/Admin/RegisterForm";
+import { Redirect } from "react-router-dom";
 
 const SignIn = () => {
    const { Content } = Layout;
    const { TabPane } = Tabs;
+
+   if (getAccessTokenApi()) {
+      return <Redirect to="/admin" />;
+   }
+
    return (
       <Layout className="sign-in">
          <Content className="sign-in__content">
