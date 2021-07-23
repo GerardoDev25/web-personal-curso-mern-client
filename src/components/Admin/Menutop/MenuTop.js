@@ -7,10 +7,17 @@ import {
 
 import "./MenuTop.scss";
 import logo from "../../../assets/img/png/3.1 logo-white.png";
+import { logout } from "../../../api/auth";
 
 const MenuTop = ({ setmenuCollpsed, menuCollpsed }) => {
    const handleCollapse = () => {
       setmenuCollpsed(!menuCollpsed);
+   };
+
+   const handleLogout = () => {
+      console.log("desconectado");
+      logout();
+      window.location.reload();
    };
 
    return (
@@ -31,10 +38,7 @@ const MenuTop = ({ setmenuCollpsed, menuCollpsed }) => {
          </div>
 
          <div className="menu-top__right">
-            <Button
-               type="link"
-               onClick={() => console.log("desconeccion")}
-            >
+            <Button type="link" onClick={handleLogout}>
                <PoweroffOutlined />
             </Button>
          </div>
