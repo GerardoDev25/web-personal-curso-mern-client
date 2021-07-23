@@ -21,8 +21,7 @@ const LayoutAdmin = (props) => {
 
    const { user, isloading } = useAuth();
 
-   console.log({ user, isloading });
-
+   console.log(user);
    // ? si no esta logeado redirecciona a ligon
    if (!user) {
       return (
