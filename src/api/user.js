@@ -41,3 +41,20 @@ export const signInApi = (data) => {
       )
       .catch((err) => ({ message: err.message, ok: false }));
 };
+
+export const getUserApi = (token) => {
+   const url = `${BASE_PATH}/${API_VERSION}/users`;
+   const params = {
+      method: "GET",
+      mode: "cors",
+      headers: {
+         "Content-Type": "application/json",
+         Authorization: token,
+      },
+   };
+
+   return fetch(url, params)
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((e) => e.message);
+};

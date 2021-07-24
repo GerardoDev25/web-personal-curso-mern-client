@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { Layout, Menu } from "antd";
 import {
@@ -9,7 +9,7 @@ import {
 
 import "./MenuSider.scss";
 
-const MenuSider = ({ menuCollpsed }) => {
+const MenuSider = ({ menuCollpsed, location }) => {
    const { Sider } = Layout;
 
    return (
@@ -17,9 +17,9 @@ const MenuSider = ({ menuCollpsed }) => {
          <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={location.pathname}
          >
-            <Menu.Item key="1">
+            <Menu.Item key="/admin">
                <Link to={"/admin"}>
                   <HomeFilled />
                   <span className="nav-text"> Home</span>
@@ -28,7 +28,7 @@ const MenuSider = ({ menuCollpsed }) => {
 
             {/*  */}
 
-            <Menu.Item key="2">
+            <Menu.Item key="/admin/users">
                <Link to={"/admin/users"}>
                   <UserOutlined />
                   <span className="nav-text"> Usuarios </span>
@@ -39,4 +39,4 @@ const MenuSider = ({ menuCollpsed }) => {
    );
 };
 
-export default MenuSider;
+export default withRouter(MenuSider);
