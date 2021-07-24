@@ -58,3 +58,20 @@ export const getUserApi = (token) => {
       .then((result) => result)
       .catch((e) => e.message);
 };
+
+export const getUserActiveApi = (token, status) => {
+   const url = `${BASE_PATH}/${API_VERSION}/users-active?active=${status}`;
+   const params = {
+      method: "GET",
+      mode: "cors",
+      headers: {
+         "Content-Type": "application/json",
+         Authorization: token,
+      },
+   };
+
+   return fetch(url, params)
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((e) => e.message);
+};

@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { getAccessTokenApi } from "../../../api/auth";
-import { getUserApi } from "../../../api/user";
+import { getUserActiveApi } from "../../../api/user";
 
 import "./User.scss";
 
 const User = () => {
-   const [users, setusers] = useState([]);
+   const [usersActive, setusersActive] = useState([]);
+   const [usersInactive, setusersInactive] = useState([]);
 
    const token = getAccessTokenApi();
 
+   console.log({ usersActive, usersInactive });
+
    useEffect(() => {
-      getUserApi(token).then((e) => setusers(e));
+      getUserActiveApi(token, true).then((e) =>
+         setusersActive(e)
+      );
+      getUserActiveApi(token, false).then((e) =>
+         setusersInactive(e)
+      );
    }, [token]);
-   console.log(users);
 
    return (
       <div>
