@@ -1,6 +1,7 @@
 // ? admin
 import LayoutAdmin from "../layouts/LayoutAdmin";
 import AdminHome from "../pages/Admin";
+import AdminUser from "../pages/Admin/Users";
 import AdminSignIn from "../pages/Admin/SignIn";
 
 // ? basic
@@ -24,6 +25,11 @@ const admin = {
       {
          path: "/admin/login",
          component: AdminSignIn,
+         exact: true,
+      },
+      {
+         path: "/admin/users",
+         component: AdminUser,
          exact: true,
       },
       {

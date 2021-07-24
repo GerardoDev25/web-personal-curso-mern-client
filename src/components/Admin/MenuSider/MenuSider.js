@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 
 import { Layout, Menu } from "antd";
-import { HomeFilled, MenuFoldOutlined } from "@ant-design/icons";
+import {
+   HomeFilled,
+   // MenuFoldOutlined,
+   UserOutlined,
+} from "@ant-design/icons";
 
 import "./MenuSider.scss";
 
@@ -22,10 +26,12 @@ const MenuSider = ({ menuCollpsed }) => {
                </Link>
             </Menu.Item>
 
+            {/*  */}
+
             <Menu.Item key="2">
-               <Link to={"/admin/menu-web"}>
-                  <MenuFoldOutlined />
-                  <span className="nav-text"> Menu web</span>
+               <Link to={"/admin/users"}>
+                  <UserOutlined />
+                  <span className="nav-text"> Usuarios </span>
                </Link>
             </Menu.Item>
          </Menu>
